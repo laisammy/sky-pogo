@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b2yy3axurey8"]
+
+[ext_resource type="Texture2D" uid="uid://b8y1w08ilygfk" path="res://Assets/Images/free_-_skybox_cliffside_0.hdr" id="1_rdw05"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gwu2e"]
+panorama = ExtResource("1_rdw05")
+
+[sub_resource type="Sky" id="Sky_xbxml"]
+sky_material = SubResource("PanoramaSkyMaterial_gwu2e")
+
+[sub_resource type="Environment" id="Environment_ln2h6"]
+background_mode = 2
+sky = SubResource("Sky_xbxml")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y3kpf"]
+
+[node name="Game" type="Node" unique_id=493148153]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1852841888]
+environment = SubResource("Environment_ln2h6")
+camera_attributes = SubResource("CameraAttributesPractical_y3kpf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1021033959]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1983113705]
