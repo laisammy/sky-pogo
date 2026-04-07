@@ -28,6 +28,9 @@ camera_attributes = SubResource("CameraAttributesPractical_y3kpf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1375313, 8.603731)
 
 [node name="PlatformA" parent="." unique_id=1506370384 instance=ExtResource("2_gwu2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10.900392, 0)
+
+[node name="PlatformA2" parent="." unique_id=1131661257 instance=ExtResource("2_gwu2e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="Player" parent="." unique_id=1678986724 instance=ExtResource("3_xbxml")]
