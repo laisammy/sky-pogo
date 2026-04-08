@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://b2yy3axurey8"]
 
-[ext_resource type="Texture2D" uid="uid://cx4levc1y8rhi" path="res://Assets/Images/sky_29_2k.png" id="1_gwu2e"]
-[ext_resource type="PackedScene" uid="uid://b3r62iewou66k" path="res://Scenes/Platforms/PlatformA.tscn" id="2_gwu2e"]
-[ext_resource type="PackedScene" uid="uid://dqnnk454pwolf" path="res://Scenes/Player/Player.tscn" id="3_xbxml"]
+[ext_resource type="Texture2D" uid="uid://cx4levc1y8rhi" path="res://Assets/Images/sky_29_2k.png" id="1_qikps"]
+[ext_resource type="PackedScene" uid="uid://dqnnk454pwolf" path="res://Scenes/Player/player.tscn" id="2_i1e5p"]
+[ext_resource type="PackedScene" uid="uid://cxouyjm7mm48d" path="res://Scenes/Spawner/spawner.tscn" id="3_ciybh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gwu2e"]
-panorama = ExtResource("1_gwu2e")
+panorama = ExtResource("1_qikps")
 
 [sub_resource type="Sky" id="Sky_xbxml"]
 sky_material = SubResource("PanoramaSkyMaterial_gwu2e")
@@ -27,11 +27,7 @@ camera_attributes = SubResource("CameraAttributesPractical_y3kpf")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1983113705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1375313, 8.603731)
 
-[node name="PlatformA" parent="." unique_id=1506370384 instance=ExtResource("2_gwu2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 10.900392, 0)
-
-[node name="PlatformA2" parent="." unique_id=1131661257 instance=ExtResource("2_gwu2e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-
-[node name="Player" parent="." unique_id=1678986724 instance=ExtResource("3_xbxml")]
+[node name="Player" parent="." unique_id=1678986724 instance=ExtResource("2_i1e5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.066078, 0)
+
+[node name="Spawner" parent="." unique_id=1029083208 instance=ExtResource("3_ciybh")]
