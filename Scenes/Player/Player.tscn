@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cr0gi4rr4t7td" path="res://Scenes/Player/player.gd" id="1_s0eop"]
 [ext_resource type="Texture2D" uid="uid://dld2twxl4a8uw" path="res://Assets/Models/Kenney/Textures/colormap.png" id="2_a3d8c"]
+[ext_resource type="AudioStream" uid="uid://b7b08vowi4hai" path="res://Assets/Audios/Land1.wav" id="3_0u5uq"]
+[ext_resource type="AudioStream" uid="uid://c74l5nlmupdq5" path="res://Assets/Audios/Land2.wav" id="4_jlvik"]
+[ext_resource type="AudioStream" uid="uid://nf3l2p0i0bb0" path="res://Assets/Audios/Land3.wav" id="5_gk6dx"]
+[ext_resource type="AudioStream" uid="uid://ddvc3o4fg4p4l" path="res://Assets/Audios/Land4.wav" id="6_jhyir"]
+[ext_resource type="AudioStream" uid="uid://bw6qt28wd0nun" path="res://Assets/Audios/Land5.wav" id="7_74mp2"]
+[ext_resource type="AudioStream" uid="uid://c6wvo2mmu84au" path="res://Assets/Audios/LongFall.wav" id="8_jlvik"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3ax4"]
 albedo_color = Color(0.7138766, 0.57444406, 0, 1)
@@ -2713,6 +2719,14 @@ _data = {
 &"wheelchair-sit": SubResource("Animation_2jnj1")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oikmp"]
+streams_count = 5
+stream_0/stream = ExtResource("3_0u5uq")
+stream_1/stream = ExtResource("4_jlvik")
+stream_2/stream = ExtResource("5_gk6dx")
+stream_3/stream = ExtResource("6_jhyir")
+stream_4/stream = ExtResource("7_74mp2")
+
 [node name="Player" type="CharacterBody3D" unique_id=1678986724]
 script = ExtResource("1_s0eop")
 
@@ -2790,3 +2804,9 @@ skeleton = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=634639432]
 libraries/ = SubResource("AnimationLibrary_enij7")
+
+[node name="landSFX" type="AudioStreamPlayer3D" parent="." unique_id=1254618546]
+stream = SubResource("AudioStreamRandomizer_oikmp")
+
+[node name="fallSFX" type="AudioStreamPlayer3D" parent="." unique_id=1349417107]
+stream = ExtResource("8_jlvik")

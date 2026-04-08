@@ -2,6 +2,7 @@ extends Camera3D
 
 @export var buffer: Vector3 = Vector3(0, 16, 16)
 @export var smoothSpeed: float = 2.0
+var rotateSpeed: float = 0.1
 
 var basePosition: Vector3
 
@@ -17,8 +18,8 @@ func _process(delta: float) -> void:
 	position = position.lerp(basePosition, smoothSpeed * delta)
 
 func _on_player_pos(playerPos: Vector3) -> void:
-	print("newPlayerPos")
-	print(playerPos)
+	#print("newPlayerPos")
+	#print(playerPos)
 	basePosition = playerPos + buffer
 
 #func _on_new_platform(platformPos: Vector3) -> void: # Fired when signal is recieved from _enter_tree()

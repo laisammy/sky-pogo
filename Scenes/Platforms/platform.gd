@@ -13,7 +13,7 @@ const waitTimeVar: float = 1.5
 func _ready() -> void:
 	timer.wait_time = waitTime
 	timer.wait_time += randf_range(-waitTimeVar, waitTimeVar)
-	print(timer.wait_time)
+	#print(timer.wait_time)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

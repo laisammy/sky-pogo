@@ -1,9 +1,14 @@
 extends Node
 
 @export var platformScenes: Array[PackedScene]
+@onready var platform_a: PlatformA = $PlatformA
+@onready var floor: Area3D = $"../Floor"
 
 const OFFSET_UP: Vector2 = Vector2(5, 8)
 const OFFSET_SIDE: Vector2 = Vector2(2, 4)
+
+func _ready() -> void:
+	SignalHub.emit_spawner_loaded(platform_a.position.y) # Send signal to signalHub.gd
 
 func _enter_tree() -> void: # Start listening to newPlatform event when the game loads in
 	SignalHub.newPlatform.connect(_on_new_platform)
@@ -27,6 +32,8 @@ func spawn_platform(oldPlatformPos: Vector3) -> void:
 	
 	newPlatform.position = oldPlatformPos + Vector3(randomX, randomY, randomZ)
 	add_child(newPlatform)
+	
+	floor.position.y += 5
 
 func _on_new_platform(platformPos: Vector3) -> void: # Fired when signal is recieved from _enter_tree()
 	spawn_platform(platformPos)
