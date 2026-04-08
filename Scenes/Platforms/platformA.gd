@@ -9,8 +9,6 @@ class_name PlatformA
 const waitTime: float = 4.0
 const waitTimeVar: float = 1.5
 
-signal newPlatform(platformPos: Vector3)
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.wait_time = waitTime
@@ -36,4 +34,4 @@ func _on_player_detector_body_entered(body: Node3D) -> void:
 	if body is Player:
 		player_detector.body_entered.disconnect(_on_player_detector_body_entered)
 		timer.start()
-		newPlatform.emit(position) # Fires signal to spawner.gd
+		SignalHub.emit_new_platform(position) # Fires signal to signalHub.gd
