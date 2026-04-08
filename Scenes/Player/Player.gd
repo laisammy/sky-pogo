@@ -11,7 +11,10 @@ const MOVE_SPEED: float = 10.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+
+func _process(delta: float) -> void:
+	SignalHub.emit_player_position(position) # Keep sending signals of the player's current position to signalHub.gd
 
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
@@ -31,18 +34,21 @@ func handle_movement(delta: float) -> void:
 	var direction := Vector3.ZERO
 
 	if Input.is_action_pressed("up"):
+		print("up")
 		direction += Vector3.FORWARD
 	if Input.is_action_pressed("down"):
+		print("down")
 		direction += Vector3.BACK
 	if Input.is_action_pressed("left"):
+		print("left")
 		direction += Vector3.LEFT
 	if Input.is_action_pressed("right"):
+		print("right")
 		direction += Vector3.RIGHT
 
 	velocity.x = direction.x * MOVE_SPEED
 	velocity.z = direction.z * MOVE_SPEED
 
-	
 func handle_gravity(delta: float) -> void:
 	if is_on_floor():
 		velocity.y = JUMP_FORCE
@@ -54,3 +60,4 @@ func handle_animation() -> void:
 		anim_player.play("jump")
 	else:
 		anim_player.play("fall")
+		

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b2yy3axurey8"]
 
+[ext_resource type="Script" uid="uid://chh1c0kgbv05u" path="res://Scenes/Game/game.gd" id="1_ciybh"]
 [ext_resource type="Texture2D" uid="uid://cx4levc1y8rhi" path="res://Assets/Images/sky_29_2k.png" id="1_qikps"]
 [ext_resource type="PackedScene" uid="uid://dqnnk454pwolf" path="res://Scenes/Player/player.tscn" id="2_i1e5p"]
 [ext_resource type="PackedScene" uid="uid://cxouyjm7mm48d" path="res://Scenes/Spawner/spawner.tscn" id="3_ciybh"]
@@ -17,7 +18,31 @@ sky = SubResource("Sky_xbxml")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y3kpf"]
 
+[sub_resource type="GDScript" id="GDScript_flgk0"]
+script/source = "extends Area3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+
+		
+
+
+func _on_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
+"
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vifcx"]
+
 [node name="Game" type="Node" unique_id=493148153]
+script = ExtResource("1_ciybh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1852841888]
 environment = SubResource("Environment_ln2h6")
@@ -26,9 +51,20 @@ camera_attributes = SubResource("CameraAttributesPractical_y3kpf")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1021033959]
 
 [node name="Player" parent="." unique_id=1678986724 instance=ExtResource("2_i1e5p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.066078, 0)
+transform = Transform3D(-0.94072175, 0, -8.2240504e-08, 0, 0.94072175, 0, 8.2240504e-08, 0, -0.94072175, 0, 6.066078, 0)
 
 [node name="Spawner" parent="." unique_id=1029083208 instance=ExtResource("3_ciybh")]
 
+[node name="Floor" type="Area3D" parent="." unique_id=1320526360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+script = SubResource("GDScript_flgk0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=1229158770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.010375977)
+shape = SubResource("WorldBoundaryShape3D_vifcx")
+
 [node name="PlayerCamera" parent="." unique_id=16483792 instance=ExtResource("4_i1e5p")]
-transform = Transform3D(1, 0, 0, 0, 0.8829476, 0.4694716, 0, -0.4694716, 0.8829476, 0, 15.636833, 16.358582)
+transform = Transform3D(1, 0, 0, 0, 0.79863554, 0.601815, 0, -0.601815, 0.79863554, 0, 15.636833, 16.358582)
+top_level = true
+
+[connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]

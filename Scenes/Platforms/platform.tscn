@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b3r62iewou66k"]
+
+[ext_resource type="Script" uid="uid://csiotsrdxc3v6" path="res://Scenes/Platforms/platform.gd" id="1_4k5uo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1olt6"]
+size = Vector3(8.001828, 3.4246063, 3.1186075)
+
+[sub_resource type="Animation" id="Animation_1olt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pg3yp"]
+resource_name = "vanish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 1),
+"transitions": PackedFloat32Array(0.4204483, 0.24148433, 1, 1, 0.6830198, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_omita"]
+_data = {
+&"RESET": SubResource("Animation_1olt6"),
+&"vanish": SubResource("Animation_pg3yp")
+}
+
+[node name="Platform" type="Node3D" unique_id=1506370384]
+script = ExtResource("1_4k5uo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1928375882]
+
+[node name="PlayerDetector" type="Area3D" parent="." unique_id=1832608794]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetector" unique_id=1634393834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2504506, 1.8890915, -0.16709137)
+shape = SubResource("BoxShape3D_1olt6")
+debug_color = Color(1.7327071e-05, 0.8094265, 0.9439877, 0.41960785)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1667544143]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1202216575]
+
+[node name="Timer" type="Timer" parent="." unique_id=1674659209]
+wait_time = 3.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1169227471]
+libraries/ = SubResource("AnimationLibrary_omita")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

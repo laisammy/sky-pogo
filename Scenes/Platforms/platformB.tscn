@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dpl51xul7lrj6"]
+
+[ext_resource type="PackedScene" uid="uid://b3r62iewou66k" path="res://Scenes/Platforms/platform.tscn" id="1_1bejx"]
+[ext_resource type="ArrayMesh" uid="uid://mx870qpmw08d" path="res://Resources/cloudBMesh.tres" id="2_51jms"]
+[ext_resource type="Shape3D" uid="uid://bo82qk6du8luw" path="res://Scenes/Platforms/cloudBCollision.tres" id="3_xy8ru"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bejx"]
+size = Vector3(9.070525, 3.4246063, 3.0983248)
+
+[node name="PlatformB" unique_id=1506370384 instance=ExtResource("1_1bejx")]
+
+[node name="MeshInstance3D" parent="." index="0" unique_id=1928375882]
+mesh = ExtResource("2_51jms")
+
+[node name="CollisionShape3D" parent="PlayerDetector" parent_id_path=PackedInt32Array(1832608794) index="0" unique_id=1634393834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28501177, 1.8890915, -0.0056209564)
+shape = SubResource("BoxShape3D_1bejx")
+
+[node name="CollisionShape3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(1667544143) index="0" unique_id=1202216575]
+transform = Transform3D(0.90667427, 0, 0, 0, 0.90667427, 0, 0, 0, 0.668814, 0, 0, 0)
+shape = ExtResource("3_xy8ru")
