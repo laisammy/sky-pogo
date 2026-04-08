@@ -2,8 +2,23 @@
 
 [ext_resource type="Script" uid="uid://txh042p0kvqa" path="res://Scenes/HUD/hud.gd" id="1_5aai8"]
 [ext_resource type="LabelSettings" uid="uid://dlnauqaodij6g" path="res://Resources/labelWhite32.tres" id="1_33i1w"]
+[ext_resource type="FontFile" uid="uid://d3r15sdf7klk5" path="res://Assets/Fonts/Starborn.otf" id="3_a56j6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k83ni"]
+font = ExtResource("3_a56j6")
+font_size = 64
+font_color = Color(0.9451261, 0.8665631, 0, 1)
+outline_size = 10
+outline_color = Color(0.57535046, 0.46672422, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_a56j6"]
+font = ExtResource("3_a56j6")
+font_color = Color(0.9451261, 0.8665631, 0, 1)
+outline_size = 10
+outline_color = Color(0.57535046, 0.46672422, 0, 1)
 
 [node name="HUD" type="Control" unique_id=599714304]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,3 +52,45 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Current Score: 0"
 label_settings = ExtResource("1_33i1w")
+
+[node name="gameOver" type="ColorRect" parent="." unique_id=543121906]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39215687, 0.57254905, 0.63529414, 0.6784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gameOver" unique_id=881365174]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -74.0
+offset_right = 250.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gameOverLabel" type="Label" parent="gameOver/VBoxContainer" unique_id=1418571733]
+layout_mode = 2
+text = "game Over!"
+label_settings = SubResource("LabelSettings_k83ni")
+
+[node name="newHighScore" type="Label" parent="gameOver/VBoxContainer" unique_id=1536402081]
+visible = false
+layout_mode = 2
+text = "New High Score!"
+label_settings = SubResource("LabelSettings_a56j6")
+horizontal_alignment = 1
+
+[node name="keepItUp" type="Label" parent="gameOver/VBoxContainer" unique_id=1995839719]
+layout_mode = 2
+text = "Keep going!"
+label_settings = SubResource("LabelSettings_a56j6")
+horizontal_alignment = 1

@@ -2,9 +2,16 @@ extends Control
 
 @onready var score_label: Label = $MarginContainer/scoreLabel
 @onready var best_label: Label = $MarginContainer/bestLabel
+@onready var game_over: ColorRect = $gameOver
+@onready var new_high_score: Label = $gameOver/VBoxContainer/newHighScore
+@onready var keep_it_up: Label = $gameOver/VBoxContainer/keepItUp
 
 var hsr: highScoreResource = highScoreResource.load_or_create()
 var currentScore: int = 0
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reload"):
+		get_tree().reload_current_scene()
 
 func _enter_tree() -> void:
 	SignalHub.new_height_reached.connect(new_height_reached)
@@ -23,4 +30,7 @@ func new_height_reached(height: float) -> void:
 	score_label.text = "Current Score: " + str(currentScore)
 	
 func gameOver() -> void:
-	hsr.check_and_update(currentScore)
+	if hsr.check_and_update(currentScore):
+		new_high_score.show()
+		keep_it_up.hide()
+	game_over.show()
