@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dlwvh3l6eamxn"]
+
+[ext_resource type="Script" uid="uid://txh042p0kvqa" path="res://Scenes/HUD/hud.gd" id="1_5aai8"]
+[ext_resource type="LabelSettings" uid="uid://dlnauqaodij6g" path="res://Resources/labelWhite32.tres" id="1_33i1w"]
+
+[node name="HUD" type="Control" unique_id=599714304]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5aai8")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=580245744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="bestLabel" type="Label" parent="MarginContainer" unique_id=1805759300]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Best Score: 0"
+label_settings = ExtResource("1_33i1w")
+
+[node name="scoreLabel" type="Label" parent="MarginContainer" unique_id=1376756224]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Current Score: 0"
+label_settings = ExtResource("1_33i1w")

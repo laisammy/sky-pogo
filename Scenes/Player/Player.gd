@@ -15,10 +15,15 @@ const LAND_BUFFER: float = 1.0
 const FALLEN_OFF_THRESHOLD: float = -60.0
 
 var last_landed: float = 0.0
+var start_height: float = 0.0
+var best_height: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	last_landed = position.y
+	start_height = position.y
+	await get_tree().process_frame
+	SignalHub.emit_new_height_reached(best_height)
 
 func _enter_tree() -> void:
 	SignalHub.spawner_loaded.connect(_on_spawner_loaded) # Listens for signals coming from signalHub.gd
@@ -33,6 +38,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	handle_animation()
+	
+	update_best_height()
 	
 func handle_rotation(delta: float) -> void:
 	if Input.is_action_pressed("left"):
@@ -78,3 +85,8 @@ func handle_animation() -> void:
 		
 func _on_spawner_loaded(yPos: float) -> void:
 	last_landed = yPos - LAND_BUFFER * 2
+	
+func update_best_height() -> void:
+	if position.y - start_height > best_height:
+		best_height = position.y - start_height
+		SignalHub.emit_new_height_reached(best_height)

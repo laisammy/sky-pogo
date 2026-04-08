@@ -5,7 +5,7 @@ extends Node
 @onready var floor: Area3D = $"../Floor"
 
 const OFFSET_UP: Vector2 = Vector2(5, 8)
-const OFFSET_SIDE: Vector2 = Vector2(2, 4)
+const OFFSET_SIDE: Vector2 = Vector2(3, 5)
 
 func _ready() -> void:
 	SignalHub.emit_spawner_loaded(platform_a.position.y) # Send signal to signalHub.gd

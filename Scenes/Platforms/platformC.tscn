@@ -18,5 +18,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1566267, 1.8418232, -0.1768
 shape = SubResource("BoxShape3D_e51n5")
 
 [node name="CollisionShape3D" parent="StaticBody3D" parent_id_path=PackedInt32Array(1667544143) index="0" unique_id=1202216575]
-transform = Transform3D(0.88776267, 0, 0, 0, 0.88776267, 0, 0, 0, 0.88776267, 0, 0, 0)
+transform = Transform3D(0.8915399, 0, 0, 0, 0.8915399, 0, 0, 0, 0.8915399, 0, 0, 0)
 shape = ExtResource("3_xstkw")

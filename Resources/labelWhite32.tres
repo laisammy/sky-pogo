@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://dlnauqaodij6g"]
+
+[ext_resource type="FontFile" uid="uid://d3r15sdf7klk5" path="res://Assets/Fonts/Starborn.otf" id="1_6ucro"]
+
+[resource]
+font = ExtResource("1_6ucro")
+font_size = 32
+outline_size = 10
+outline_color = Color(0.11764706, 0.11764706, 0.11764706, 1)

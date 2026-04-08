@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cxouyjm7mm48d" path="res://Scenes/Spawner/spawner.tscn" id="3_ciybh"]
 [ext_resource type="PackedScene" uid="uid://dldbtmp0j2nsd" path="res://Scenes/PlayerCamera/playerCamera.tscn" id="4_i1e5p"]
 [ext_resource type="AudioStream" uid="uid://3bxxc2lkk4xs" path="res://Assets/Audios/starostin-comedy-cartoon-funny-background-music-492540.mp3" id="6_flgk0"]
+[ext_resource type="PackedScene" uid="uid://dlwvh3l6eamxn" path="res://Scenes/HUD/hud.tscn" id="7_vifcx"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gwu2e"]
 panorama = ExtResource("1_qikps")
@@ -77,5 +78,7 @@ shape = SubResource("WorldBoundaryShape3D_vifcx")
 stream = ExtResource("6_flgk0")
 volume_db = -5.0
 autoplay = true
+
+[node name="HUD" parent="Music" unique_id=2022996097 instance=ExtResource("7_vifcx")]
 
 [connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]
